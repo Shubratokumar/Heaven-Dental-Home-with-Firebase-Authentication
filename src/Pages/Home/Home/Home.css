@@ -1,0 +1,21 @@
+/* .home{
+    background-image: linear-gradient(red, orange);
+} */
+.home{
+    background-color: rgba(193, 209, 204, 0.808);
+}
+.home img{
+    border-radius: 15px;
+}
+.title{
+    font-size: 52px;   
+}
+.sub-title{
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px; 
+    font-weight: 500;
+}
+.oranged{
+    color: orangered;
+}
