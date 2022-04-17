@@ -10,11 +10,10 @@ const Services = () => {
         .then(res => res.json())
         .then(data => setServices(data))
     },[])
-    console.log(services)
     return (
         <div className='services'>
             <div className="container p-3">
-                <h1 className='services-title text-center'>
+                <h1 className='services-title text-center my-5'>
                     Comprehensive<span className="oranged"> Care, </span>  
                     One <span className="oranged"> Location.</span>
                 </h1>

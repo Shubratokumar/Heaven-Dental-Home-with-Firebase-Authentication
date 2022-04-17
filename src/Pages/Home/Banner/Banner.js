@@ -6,7 +6,7 @@ const Banner = () => {
     return (
         <div className="home">
             <div className='container py-5'>
-                <div className="row align-items-center justify-content-center g-4">
+                <div className="row align-items-center justify-content-center g-4 mx-2">
                     <div className="col-12 col-lg-6 align-self-center">
                         <p className='sub-title'>Your <span className='oranged'>trusted</span> dentist</p>
                         <h2 className='title'>
