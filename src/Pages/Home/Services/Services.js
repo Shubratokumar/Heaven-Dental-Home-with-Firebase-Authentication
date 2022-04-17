@@ -19,7 +19,7 @@ const Services = () => {
                     One <span className="oranged"> Location.</span>
                 </h1>
                 <h2 className="title">Total services available right now:{services.length}</h2>
-                <div className="row">
+                <div className="row row-cols-1 row-cols-md-3 g-4">
                     {
                         services.map(service => <Service service={service} key={service.id}></Service>)
                     }
