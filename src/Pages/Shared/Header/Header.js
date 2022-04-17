@@ -7,7 +7,7 @@ import './Header.module.css'
 const Header = () => {
   return (
     <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-4 bg-body rounded-3">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-4 bg-body rounded-3 sticky-top">
             <div className="container">
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

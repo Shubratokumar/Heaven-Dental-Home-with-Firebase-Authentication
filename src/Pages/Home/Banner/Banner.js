@@ -15,7 +15,7 @@ const Banner = () => {
                         </h2>
                         <p className='sub-title'>treat your <span className='oranged'>smile,</span> treat your <span className='oranged'>soul.</span></p>
                     </div>
-                    <div className="col-12 col-lg-6 align-self-center shadow p-3 mb-5 bg-body rounded">
+                    <div className="col-12 col-lg-6 align-self-center shadow p-3 mb-3 bg-body rounded">
                         <img className='img-fluid' src={operationTheater} alt="" />
                     </div>
                 </div>
