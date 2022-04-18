@@ -6,7 +6,6 @@ import './Services.css';
 
 const Services = () => {
     const [services] = useServices([]);
-    console.log(services);
     return (
         <div className='services'>
             <div className="container p-3">

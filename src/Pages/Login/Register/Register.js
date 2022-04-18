@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
 import {
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import SocialLogin from "../SocialLogin";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [createUserWithEmailAndPassword] =
-    useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user, error] =
+    useCreateUserWithEmailAndPassword(auth,  {sendEmailVerification: true});
+    const navigate = useNavigate();
+    const location = useLocation()
 
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
@@ -24,11 +27,25 @@ const Register = () => {
   const handleConfirmPasswordBlur = (e) => {
     setConfirmPassword(e.target.value);
   };
+  // redirect 
+  let from = location.state?.from?.pathname || "/";
 
-  const handleFormSubmit = (event) => {
+  if(user){
+    navigate(from, { replace: true });    
+  }
+  
+
+  const handleFormSubmit = async(event) => {
     event.preventDefault();
-    if(password === confirmPassword){
-        createUserWithEmailAndPassword(email, password);
+    if(email && password && confirmPassword === password){
+        await createUserWithEmailAndPassword(email, password);
+        await toast.success("Successfully Registered !!!")
+    }
+    if(confirmPassword !== password){
+        toast.error("Password doesn't match!!!")
+    }
+    if(error){
+        await toast.error("There is an error!!!")
     }
   };
   return (
@@ -78,7 +95,7 @@ const Register = () => {
         </form>
         <p className="mt-3">
           Already have an account?{" "}
-          <Link className="text-decoration-none oranged" to="/login" >Create New Account</Link>
+          <Link className="text-decoration-none oranged" to="/login" >Login</Link>
         </p>
         <SocialLogin></SocialLogin>  
       </div>

@@ -8,20 +8,45 @@ import {
   useSignInWithFacebook,
   useSignInWithGithub,
 } from "react-firebase-hooks/auth";
+import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
-  const [signInWithFacebook] = useSignInWithFacebook(auth);
-  const [signInWithGithub] = useSignInWithGithub(auth);
 
-  const handleGoogleSignIn = () => {
-    signInWithGoogle();
+  const [signInWithGoogle, user, error] = useSignInWithGoogle(auth);
+  const [signInWithFacebook, user1, error1] = useSignInWithFacebook(auth);
+  const [signInWithGithub, user2, error2] = useSignInWithGithub(auth);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // redirect 
+  let from = location.state?.from?.pathname || "/";
+
+  if(user || user1 || user2){
+    navigate(from, { replace: true });    
+  }
+  if(error || error1){
+      toast.error('An error happend!!!');
+  }
+
+  const handleGoogleSignIn = async() => {
+    await signInWithGoogle();
+    if(!error){
+        toast.success("Successfully Login with Google!!!") 
+    }
   };
-  const handlefacebookSignIn = () => {
-    signInWithFacebook();
+  const handlefacebookSignIn = async() => {
+    await signInWithFacebook();
+    if(!error1){
+        await toast.success("Successfully Login  with Facebook!!!")
+    }
   };
-  const handleGitHubSignIn = () => {
-    signInWithGithub();
+  const handleGitHubSignIn = async() => {
+    await signInWithGithub();
+    await toast.success("Successfully Login  with GitHub!!!")
+    if(error2){
+        await toast.error('An error happend!!!');
+    }
   };
   return (
     <div>

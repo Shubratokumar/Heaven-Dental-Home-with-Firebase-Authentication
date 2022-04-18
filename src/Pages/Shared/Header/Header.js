@@ -1,10 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import auth from "../../../firebase.init";
 import CustomLink from "../../CustomLInk/CustomLink";
-import './Header.module.css'
-// import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import './Header.css';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { signOut } from 'firebase/auth';
+import toast from "react-hot-toast";
 
 const Header = () => {
+    const [ user] = useAuthState(auth);
+
+    const logout = () => {
+        signOut(auth);
+        toast.success("Successfully Logout!!!", {
+            duration: 3000,
+            style: {
+              background: "black",
+              color: "white",
+            },
+          });
+      };
+
   return (
     <>
         <nav className="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-4 bg-body rounded-3 sticky-top">
@@ -26,7 +42,21 @@ const Header = () => {
                     </li>
                 </ul>
                 <div className="d-flex">
-                    <CustomLink className="nav-link" to="/login">Login</CustomLink>
+                    {
+                        user?.uid ? 
+                        <>
+                        <img className="login-img" src=
+                            {
+                                user?.photoURL ? user?.photoURL : ""
+                            } 
+                        alt="" />
+                        <CustomLink className="nav-link"  to='user'>{user?.displayName ? user?.displayName : ""}</CustomLink>
+                        {/* <Link className="" to=''>{user?.displayName ? user?.displayName : ""}</Link> */}
+                         <CustomLink  onClick={logout} className="nav-link" to="/login">Signout</CustomLink> 
+                        </>
+                        :
+                        <CustomLink className="nav-link" to="/login">Login</CustomLink>
+                    }
                 </div>
                 </div>
             </div>
