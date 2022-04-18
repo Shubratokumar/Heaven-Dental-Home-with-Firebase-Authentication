@@ -3,10 +3,10 @@ import { AiFillStar } from "react-icons/ai";
 import { useNavigate} from 'react-router-dom';
 
 const Service = ({ service }) => {
-  const { title, image, description, price, id } = service;
+  const { title, image, description, price} = service;
   const navigate = useNavigate();
   const handleCheckOut = () =>{
-      navigate(`/checkout/${id}`)
+      navigate(`/checkout`)
   }
   return (
     <div>
