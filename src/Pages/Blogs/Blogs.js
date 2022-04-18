@@ -3,8 +3,8 @@ import './Blogs.css'
 
 const Blogs = () => {
   return (
-    <div>
-        <div className="container px-4">
+    <div className="blogs">
+        <div className="container p-4">
         <h2 className='fs-1 text-center q-title'>Question and Answer :</h2>
             <div className="row gx-5 ">
             <div className="col-sm-12 col-lg-4">

@@ -40,9 +40,8 @@ const SocialLogin = () => {
   };
   const handleGitHubSignIn = async() => {
     await signInWithGithub();
-    await toast.success("Successfully Login  with GitHub!!!")
-    if(error2){
-        await toast.error('An error happend!!!');
+    if(!error2){
+        await toast.success("Successfully Login  with GitHub!!!")
     }
   };
   return (

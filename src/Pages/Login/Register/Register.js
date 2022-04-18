@@ -11,7 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [createUserWithEmailAndPassword, user, error] =
+  const [createUserWithEmailAndPassword,  error] =
     useCreateUserWithEmailAndPassword(auth,  {sendEmailVerification: true});
     const navigate = useNavigate();
 
@@ -27,16 +27,12 @@ const Register = () => {
     setConfirmPassword(e.target.value);
   };
 
-  if(user){
-    navigate("/");    
-  }
-  
-
   const handleFormSubmit = async(event) => {
     event.preventDefault();
     if(email && password && confirmPassword === password){
         await createUserWithEmailAndPassword(email, password);
         await toast.success("Successfully Registered !!!")
+        navigate("/"); 
     }
     if(confirmPassword !== password){
         toast.error("Password doesn't match!!!")
@@ -44,6 +40,7 @@ const Register = () => {
     if(error){
         await toast.error("There is an error!!!")
     }
+
   };
   return (
     <div className="auth-form-container ">
