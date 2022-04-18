@@ -7,7 +7,7 @@ import {
 } from "react-firebase-hooks/auth";
 
 import auth from "./../../../firebase.init";
-import SocialLogin from "../SocialLogin";
+import SocialLogin from "../SocialLogin/SocialLogin";
 import { toast } from 'react-hot-toast';
 
 const Login = () => {
@@ -41,17 +41,17 @@ const Login = () => {
        await toast.success("Successfully Login !!!")
      }
      if(error){
-      await toast.error("There is an error!!!")
+      await toast.error("There is an error !!!")
      }  
   };
 
   const resetPassword = async() =>{
     if(email){
       await sendPasswordResetEmail(email);
-      await toast.success("Email Sent!!!")
+      await toast.success("Email Sent successfully !!!")
     }
     else{
-      toast.error('Please enter your email !!!')
+      toast.error('Please enter your email first !!!')
     }
     
   }

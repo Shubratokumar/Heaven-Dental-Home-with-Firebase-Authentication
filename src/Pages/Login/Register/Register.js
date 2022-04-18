@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "./../../../firebase.init";
 import {
   useCreateUserWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
-import SocialLogin from "../SocialLogin";
+import SocialLogin from "../SocialLogin/SocialLogin";
 import toast from "react-hot-toast";
 
 const Register = () => {
@@ -14,7 +14,6 @@ const Register = () => {
   const [createUserWithEmailAndPassword, user, error] =
     useCreateUserWithEmailAndPassword(auth,  {sendEmailVerification: true});
     const navigate = useNavigate();
-    const location = useLocation()
 
   const handleEmailBlur = (e) => {
     setEmail(e.target.value);
@@ -27,11 +26,9 @@ const Register = () => {
   const handleConfirmPasswordBlur = (e) => {
     setConfirmPassword(e.target.value);
   };
-  // redirect 
-  let from = location.state?.from?.pathname || "/";
 
   if(user){
-    navigate(from, { replace: true });    
+    navigate("/");    
   }
   
 
