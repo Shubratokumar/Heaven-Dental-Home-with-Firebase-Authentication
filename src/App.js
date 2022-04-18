@@ -9,11 +9,13 @@ import Blogs from './Pages/Blogs/Blogs';
 import Checkout from './Pages/Checkout/Checkout';
 import Login from './Pages/Login/Login/Login';
 import Home from './Pages/Home/Home/Home';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <div>
       <Header/>
+      <Toaster/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/home" element={<Home/>} />

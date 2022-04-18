@@ -17,7 +17,7 @@ const Service = ({ service }) => {
             <h5 className="card-title fs-3">{title}</h5>
             <hr />
             <p className="card-text fs-5 fst-italic justified">{description}</p>
-            <p className="card-text"><span className="oranged">Starts with</span> : $ {price}</p>
+            <p className="card-text"><span className="oranged">Starts from</span> : $ {price}</p>
             <div>
               <p className="oranged">
                 Rating :

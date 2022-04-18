@@ -1,12 +1,14 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 
 
 const Checkout = () => {
-    const {checkId} = useParams();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [ phone, setPhone ] = useState("");
+        
     return (
         <div>
-            <h2>Please checkout ID:{checkId}</h2>
+
         </div>
     );
 };

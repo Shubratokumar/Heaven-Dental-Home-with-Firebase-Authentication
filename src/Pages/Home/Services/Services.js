@@ -1,15 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
+import useServices from '../../Hooks/useServices';
 import Service from '../Service/Service';
 import './Services.css';
 
 
 const Services = () => {
-    const [services, setServices] = useState([])
-    useEffect(()=>{
-        fetch('data.json')
-        .then(res => res.json())
-        .then(data => setServices(data))
-    },[])
+    const [services] = useServices([]);
+    console.log(services);
     return (
         <div className='services'>
             <div className="container p-3">
@@ -19,7 +16,7 @@ const Services = () => {
                 </h1>
                 <div className="row row-cols-1 row-cols-md-3 g-4">
                     {
-                        services.map(service => <Service service={service} key={service.id}></Service>)
+                        services?.map(service => <Service service={service} key={service.id}></Service>)
                     }
                 </div>
             </div>
